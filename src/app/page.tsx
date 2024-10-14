@@ -1,5 +1,24 @@
+"use client";
+
+import Card from "@/components/Card";
+import { getData } from "@/data";
+import { IProduct } from "@/type";
+import { useEffect } from "react";
+
+const products: IProduct[] = getData();
+
 export default function Home() {
+  useEffect(() => {
+    setTimeout(() => {
+      (window as any).Telegram.WebApp.ready();
+    }, 0);
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"></div>
+    <div className="px-[20px] flex flex-wrap gap-2.5">
+      {products.map((el) => (
+        <Card key={el.id} {...el} />
+      ))}
+    </div>
   );
 }

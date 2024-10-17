@@ -12,7 +12,7 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ title, price, Image, id }) => {
   const buyClickHandler = async () => {
-    let response = await fetch(
+    const response = await fetch(
       "https://605b-213-142-146-5.ngrok-free.app/api/webhook",
       {
         method: "POST",
@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({ title, price, Image, id }) => {
         body: JSON.stringify({ id, title, price }),
       }
     );
-    let result = await response.json();
+    const result = await response.json();
     console.log("result", result);
     // const tg = (window as any).Telegram.WebApp;
     // tg.MainButton.text = "Pay";

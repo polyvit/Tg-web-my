@@ -13,7 +13,7 @@ type CardProps = {
 const Card: React.FC<CardProps> = ({ title, price, Image, id }) => {
   const buyClickHandler = async () => {
     const response = await fetch(
-      "https://605b-213-142-146-5.ngrok-free.app/api/webhook",
+      "https://5e0a-213-142-146-5.ngrok-free.app/api/webhook",
       {
         method: "POST",
         headers: {

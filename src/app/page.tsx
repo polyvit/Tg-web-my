@@ -11,6 +11,14 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       (window as any).Telegram.WebApp.ready();
+      (window as any).Telegram.WebApp.onEvent(
+        "invoiceClosed",
+        function (object: any) {
+          if (object.status == "pending" || object.status == "paid") {
+            (window as any).Telegram.WebApp.close();
+          }
+        }
+      );
     }, 0);
   }, []);
 

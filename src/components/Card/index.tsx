@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Button from "../Button";
+import { buyClickHandler } from "@/common";
 
 type CardProps = {
   title: string;
@@ -11,27 +12,6 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ title, price, Image, id }) => {
-  const buyClickHandler = async () => {
-    const response = await fetch(
-      "https://5e0a-213-142-146-5.ngrok-free.app/api/webhook",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify({ id, title, price }),
-      }
-    );
-    const result = await response.json();
-    console.log("result", result);
-    // const tg = (window as any).Telegram.WebApp;
-    // tg.MainButton.text = "Pay";
-    // tg.MainButton.show();
-    // tg.MainButton.onClick(() => {
-    //   tg.sendInvoice();
-    // });
-  };
-
   return (
     <div className="h-max border border-solid border-card-border text-center grow-0 shrink-0 basis-[calc(50%-10px)] md:basis-[calc(25%-10px)] lg:justify-center">
       <img

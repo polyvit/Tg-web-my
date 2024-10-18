@@ -25,7 +25,10 @@ const Card: React.FC<CardProps> = ({ title, price, Image, id }) => {
         </a>
         <div className="text-2xl font-bold">{price} РУБ.</div>
         <div className="flex flex-col justify-center items-center gap-5">
-          <Button text="Купить" onClick={buyClickHandler} />
+          <Button
+            text="Купить"
+            onClick={() => buyClickHandler({ title, price, id })}
+          />
           <Link href={`/${id}`}>
             <Button btnType="link" text="Подробнее" />
           </Link>

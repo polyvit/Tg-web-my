@@ -17,6 +17,6 @@ export const buyClickHandler = async () => {
     );
     const json = await response.json();
     tg.MainButton.onClick(() => {
-      tg.sendInvoice(json.result);
+      tg.openInvoice(json.result);
     });
   };

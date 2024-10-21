@@ -3,14 +3,11 @@
 import React from "react";
 import Button from "../Button";
 import { IProduct } from "@/type";
+import { buyClickHandler } from "@/common";
 
 const subtitle = "text-custom-red mb-2.5 font-normal";
 
 const BookInfo = ({ data }: { data: IProduct }) => {
-  const clickHandler = () => {
-    console.log("click");
-  };
-
   return (
     <>
       <h1 className="font-bold text-3xl md:text-5xl mb-6">{data?.title}</h1>
@@ -26,7 +23,16 @@ const BookInfo = ({ data }: { data: IProduct }) => {
               {data?.price + 300} РУБ.
             </span>
           </div>
-          <Button text="Сделать заказ" onClick={clickHandler} />
+          <Button
+            text="Сделать заказ"
+            onClick={() =>
+              buyClickHandler({
+                title: data.title,
+                price: data.price,
+                id: data.id,
+              })
+            }
+          />
         </div>
       </div>
     </>
